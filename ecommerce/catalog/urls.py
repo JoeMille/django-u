@@ -1,7 +1,7 @@
-from django.urls import path, include 
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', include('catalog.urls')),
-    path('', views.base_view, name='base'),
+    path('index/', views.index, name='index'),  
+    
 ]
