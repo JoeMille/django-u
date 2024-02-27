@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cosmic Commerce</title>
+    <!-- Include CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'catalog/css/style.css' %}">
+</head>
+<body>
+    <!-- Content of the page -->
+    <header class="site-header">
+        <h1>COSMIC COMMERCE</h1>
+    </header>
+    {% block content %}
+
+
+    {% endblock %}
+
+    <!-- Include JavaScript file -->
+    <script src="{% static 'catalog/js/script.js' %}"></script>
+</body>
+</html>

@@ -1,10 +1,27 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Catalog</h1>
-</body>
-</html>
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<!-- Nav bar -->
+<section class="site-nav">
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Cart</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </nav>
+</section>
+
+<!--Page Content-->
+
+<div class="index-page-welcome">
+    <h2>Welcome to Cosmic Commerce</h2>
+    <h3>Where you can find the best products in the settled systems</h3>
+    <p>lorem ipsum lfdsglkdglkdgldkdvkdjhvkdhk;djfh;kdh;dkjhd;kfhd;kjhfd;kjhd;khjd;kjhfK</p>
+</div>
+
+
+
+{% endblock %}
