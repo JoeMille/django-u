@@ -1,16 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-from django.db import models
+# Category model, allowing for the creation of categories for products
+class Category(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
 # Product model, allowing for the creation of products with a description, price, and category
 class Product(models.Model):
     image = models.ImageField(upload_to='products/')
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
-
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
+    featured = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.description
 
@@ -30,9 +35,3 @@ class BasketItem(models.Model):
 
     def total_price(self):
         return self.product.price * self.quantity
-
-class Category(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name

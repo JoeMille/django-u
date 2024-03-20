@@ -56,6 +56,23 @@ body {
     color: #000;
 }
 
+/* basket styling */
+
+.basket-info {
+    position: fixed;
+    right: 0;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-family: 'Luckiest Guy', cursive;
+    color: rgb(19, 1, 48);
+}
+
+.basket-info p {
+    margin: 0 0 10px;
+}
+
 /* index main content */
 
 .index-page-welcome {
