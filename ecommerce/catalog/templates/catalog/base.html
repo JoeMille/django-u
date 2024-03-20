@@ -11,6 +11,17 @@
     <header class="site-header">
         <h1>COSMIC COMMERCE</h1>
     </header>
+    <section class="site-nav">
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Cart</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </nav>
+    </section>
     {% block content %}
 
 

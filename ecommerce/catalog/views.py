@@ -22,6 +22,9 @@ def index(request):
     basket = None
     if request.user.is_authenticated:
         basket, created = Basket.objects.get_or_create(user=request.user)
+    
+    # Fetch featured products 
+    featured_products = Product.objects.filter(featured=True)[:3]
 
     return render(request, 'catalog/index.html', {'form': form, 'basket': basket})
 
@@ -36,3 +39,9 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'catalog/register.html', {'form': form})
+
+# Products page view
+def products(request):
+    products = Product.objects.all()
+    return render(request, 'catalog/products.html', {'products': products})
+
