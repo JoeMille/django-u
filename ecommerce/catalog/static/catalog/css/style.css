@@ -87,3 +87,31 @@ body {
     font-family: 'Luckiest Guy', cursive; 
     margin-top: 50px;
 }
+
+/* Styling for the product page */
+
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-item {
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px);
+}
+
+.product-image {
+    width: 100px; /* Adjust as needed */
+    height: auto;
+}
+
+.no-products {
+    color: red;
+    font-weight: bold;
+}
+

@@ -1,11 +1,11 @@
 import stripe
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
-from .models import Product, Basket  
+from .models import Product, Basket, BasketItem  
 
 # Index page view
 def index(request):
@@ -27,6 +27,15 @@ def index(request):
     featured_products = Product.objects.filter(featured=True)[:3]
 
     return render(request, 'catalog/index.html', {'form': form, 'basket': basket})
+
+# Add products to user basket
+def add_to_basket(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    basket, created = Basket.objects.get_or_create(user=request.user)
+    basket_item, created = BasketItem.objects.get_or_create(product=product, basket=basket)
+    basket_item.quantity += 1
+    basket_item.save()
+    return redirect('products')
 
 # User Registration View
 def register(request):
