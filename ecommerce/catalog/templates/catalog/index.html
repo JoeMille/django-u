@@ -9,7 +9,7 @@
             <li><a href="">Products</a></li>
             <li><a href="">Contact</a></li>
             <li><a href="">Cart</a></li>
-            <li><a href="">About</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
         </ul>
     </nav>
 </section>
@@ -19,7 +19,7 @@
 <div class="index-page-welcome">
     <h2>Welcome to Cosmic Commerce</h2>
     <h3>Where you can find the best products in the settled systems</h3>
-    <p>lorem ipsum lfdsglkdglkdgldkdvkdjhvkdhk;djfh;kdh;dkjhd;kfhd;kjhfd;kjhd;khjd;kjhfK</p>
+    <p>Login here, or feel free to browse or <a href="{% url 'register' %}">Register</a> here</p>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
