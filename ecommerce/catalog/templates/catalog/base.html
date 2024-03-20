@@ -16,6 +16,17 @@
 
     {% endblock %}
 
+    <!-- Add this inside your base.html file -->
+<div class="basket-info">
+    {% if basket %}
+        <p>User: {{ request.user.username }}</p>
+        <p>Items in basket: {{ basket.basketitem_set.count }}</p>
+        <p>Total price: {{ basket.total_cost }}</p>
+    {% else %}
+        <p>No items in basket</p>
+    {% endif %}
+</div>
+
     <!-- Include JavaScript file -->
     <script src="{% static 'catalog/js/script.js' %}"></script>
 </body>
