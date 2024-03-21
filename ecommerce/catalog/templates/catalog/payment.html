@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm & Pay</title>
+    <!-- Include CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'catalog/css/style.css' %}">
+</head>
+<body>
+    <!-- Page Header -->
+    <header class="site-header">
+        <h1>COSMIC COMMERCE</h1>
+    </header>
+    <section class="site-nav">
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                
+            </ul>
+        </nav>
+    </section>
+
+    <!-- Payment Form -->
+    <form action="{% url 'charge' %}" method="post" id="payment-form">
+        {% csrf_token %}
+        <div class="form-row">
+            <label for="card-element">
+                Credit or debit card
+            </label>
+            <div id="card-element">
+            </div>
+
+            <!-- In case of payment form errors. -->
+            <div id="card-errors" role="alert"></div>
+        </div>
+
+        <button>Submit Payment</button>
+
+    <!-- Include JavaScript file -->
+    <script src="{% static 'catalog/js/script.js' %}"></script>
+    <!-- Stripe.js Library -->
+    <script src="https://js.stripe.com/v3/"></script>
+</body>
+</html>

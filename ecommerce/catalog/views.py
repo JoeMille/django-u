@@ -71,3 +71,7 @@ def remove_from_basket(request, item_id):
         item = BasketItem.objects.get(id=item_id)
         item.delete()
     return redirect('checkout')
+
+# Payment page view
+def payment(request):
+    return render(request, 'catalog/payment.html')
