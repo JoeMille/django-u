@@ -25,6 +25,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# Stripe API keys
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+
 
 ALLOWED_HOSTS = []
 

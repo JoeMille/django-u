@@ -11,8 +11,8 @@ const header = document.querySelector('.site-header');
 
 // Stripe Js payment form 
 
-var stripe = Stripe('pk_test_51J0ZQvK5Q5ZQ5Q5ZQ5');
-var elements = Stripe.elements();
+var stripe = Stripe('pk_test_51Own3jFlpTEzDIrEWgl8A3ChU9v5tddxPbVh8VTxHJJHAXU0nzAVBRGGvap56gncNJuVudSf0uixGMrU77It6sUV00qCFkadDE');
+var elements = stripe.elements();
 
 var card = elements.create('card');
 
@@ -22,7 +22,7 @@ var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    stripe.createtoken(card).then(function(result) {
+    stripe.createToken(card).then(function(result) {
         if (result.error) {
             var errorElement = document.getElementById('card-errors');
             errorElement.textContent = result.error.message;
@@ -39,10 +39,9 @@ function stripeTokenHandler(token) {
     var hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
     hiddenInput.setAttribute('name', 'stripeToken');
-    hiddenInput.setAttribute('value', 'token.id');
+    hiddenInput.setAttribute('value', token.id);
     form.appendChild(hiddenInput);
 
-    form.onsubmit();
+    form.submit();
 }
-
 console.log("JavaScript is being loaded!");

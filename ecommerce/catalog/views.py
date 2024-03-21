@@ -81,7 +81,7 @@ def payment(request):
 @csrf_exempt
 def charge(request):
     if request.method == 'POST':
-        stripe.api.key = settings.STRIPE_SECRET_KEY
+        stripe.api_key = settings.STRIPE_SECRET_KEY
 
         token = request.POST['stripeToken']
 
