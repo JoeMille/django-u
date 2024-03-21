@@ -54,3 +54,6 @@ def products(request):
     products = Product.objects.all()
     return render(request, 'catalog/products.html', {'products': products})
 
+# Checkout page view
+def checkout(request):
+    return render(request, 'catalog/checkout.html')
