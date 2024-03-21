@@ -63,3 +63,10 @@ def checkout(request):
         return render(request, 'catalog/checkout.html', {'basket': basket})
     else:
         return redirect('login')
+
+# Remove items from checkout basket 
+def remove_from_basket(request, item_id):
+    if request.method == 'POST':
+        item = BasketItem.objects.get(id=item_id)
+        item.delete()
+    return redirect('checkout')

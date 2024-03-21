@@ -106,7 +106,7 @@ body {
 }
 
 .product-image {
-    width: 100px; /* Adjust as needed */
+    width: 100px; 
     height: auto;
 }
 
@@ -115,3 +115,24 @@ body {
     font-weight: bold;
 }
 
+/* Checkout page styling */
+
+/* Checkout basket styling */
+.checkout-basket {
+    background-color: white;
+    color: black;
+    font-family: 'Protest Sans', sans-serif;
+    width: 50%; 
+    margin: 0 auto; 
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-basket ul {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.checkout-basket li {
+    margin-bottom: 20px; 
+}
