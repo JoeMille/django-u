@@ -136,3 +136,37 @@ body {
 .checkout-basket li {
     margin-bottom: 20px; 
 }
+
+/* Stripe form styling */
+
+.payment-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    margin-bottom: 10px;
+}
+
+#card-element {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#card-errors {
+    color: red;
+    margin-top: 10px;
+}
+
+
