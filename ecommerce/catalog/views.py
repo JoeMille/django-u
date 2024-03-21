@@ -33,8 +33,9 @@ def add_to_basket(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     basket, created = Basket.objects.get_or_create(user=request.user)
     basket_item, created = BasketItem.objects.get_or_create(product=product, basket=basket)
-    basket_item.quantity += 1
-    basket_item.save()
+    if not created:
+        basket_item.quantity += 1
+        basket_item.save()
     return redirect('products')
 
 # User Registration View
