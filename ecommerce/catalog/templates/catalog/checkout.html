@@ -1,5 +1,44 @@
-+{% extends "catalog/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cosmic Commerce</title>
+    <!-- Include CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'catalog/css/style.css' %}">
+</head>
+<body>
+    <!-- Content of the page -->
+    <header class="site-header">
+        <h1>COSMIC COMMERCE</h1>
+    </header>
+    <section class="site-nav">
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                
+            </ul>
+        </nav>
+    </section>
 
-{% block content %}
-<!-- Your content goes here -->
-{% endblock %}
+    <h2>Checkout</h2>
+    <ul>
+        {% for item in basket.basketitem_set.all %}
+            <li>
+                <h3>{{ item.product.title }}</h3>
+                <p>Price: {{ item.product.price }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
+            </li>
+        {% empty %}
+            <li>Your basket is empty</li>
+        {% endfor %}
+    </ul>
+    <p>Total price: {{ basket.get_total_price }}</p>
+
+
+    <!-- Include JavaScript file -->
+    <script src="{% static 'catalog/js/script.js' %}"></script>
+</body>
+</html>

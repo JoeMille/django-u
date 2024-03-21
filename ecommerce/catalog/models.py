@@ -27,6 +27,8 @@ class Basket(models.Model):
 
     def total_cost(self):
         return sum(item.total_price() for item in self.basketitem_set.all())
+    def get_total_price(self):
+        return sum(item.product.price * item.quantity for item in self.basketitem_set.all())
 
 # Basket model, allowing for the creation of a basket for a user
 class BasketItem(models.Model):

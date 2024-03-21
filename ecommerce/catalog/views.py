@@ -56,4 +56,10 @@ def products(request):
 
 # Checkout page view
 def checkout(request):
-    return render(request, 'catalog/checkout.html')
+    if request.user.is_authenticated:
+        basket, created = Basket.objects.get_or_create(user=request.user)
+        for item in basket.basketitem_set.all():
+            print(item.product.title)  # Print the title of the product
+        return render(request, 'catalog/checkout.html', {'basket': basket})
+    else:
+        return redirect('login')
