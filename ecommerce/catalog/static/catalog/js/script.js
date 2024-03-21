@@ -1,4 +1,3 @@
-console.log("JavaScript is being loaded!");
 
 // Header image pulsating effect
 
@@ -32,3 +31,18 @@ form.addEventListener('submit', function(event) {
         }
     });
 });
+
+// Submit Stripe form to Django
+
+function stripeTokenHandler(token) {
+    var form = document.getElementById('payment-form');
+    var hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('type', 'hidden');
+    hiddenInput.setAttribute('name', 'stripeToken');
+    hiddenInput.setAttribute('value', 'token.id');
+    form.appendChild(hiddenInput);
+
+    form.onsubmit();
+}
+
+console.log("JavaScript is being loaded!");

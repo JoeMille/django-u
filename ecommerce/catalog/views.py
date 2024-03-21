@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
+from django.views.decorators.csrf import csrf_exempt
 from .models import Product, Basket, BasketItem  
 
 # Index page view
@@ -75,3 +76,21 @@ def remove_from_basket(request, item_id):
 # Payment page view
 def payment(request):
     return render(request, 'catalog/payment.html')
+
+# Stripe payment view
+@csrf_exempt
+def charge(request):
+    if request.method == 'POST':
+        stripe.api.key = settings.STRIPE_SECRET_KEY
+
+        token = request.POST['stripeToken']
+
+        charge =  stripe.Charge.create(
+            amount=1000,
+            currency='usd',
+            description='Example charge',
+            source=token,
+        )
+
+        return render(request, 'catalog/charge.html')
+
