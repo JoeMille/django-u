@@ -1,8 +1,8 @@
 from django.urls import include, path
-from . import views
+from . import views 
+from .views import reviews 
 
 urlpatterns = [
     path('', views.reviews, name='reviews'),
-    path('', views.review_list, name='review_list'),
     path('<int:review_id>/', views.review_detail, name='review_detail'),
 ]
