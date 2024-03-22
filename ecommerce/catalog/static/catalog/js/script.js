@@ -16,32 +16,40 @@ var elements = stripe.elements();
 
 var card = elements.create('card');
 
-card.mount('#card-element');
+// Check if #card-element exists before mounting
+if (document.querySelector('#card-element')) {
+    card.mount('#card-element');
+}
 
 var form = document.getElementById('payment-form');
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+if (form) {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    stripe.createToken(card).then(function(result) {
-        if (result.error) {
-            var errorElement = document.getElementById('card-errors');
-            errorElement.textContent = result.error.message;
-        } else {
-            stripeTokenHandler(result.token);
-        }
+        stripe.createToken(card).then(function(result) {
+            if (result.error) {
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                stripeTokenHandler(result.token);
+            }
+        });
     });
-});
+}
 
 // Submit Stripe form to Django
 
 function stripeTokenHandler(token) {
     var form = document.getElementById('payment-form');
-    var hiddenInput = document.createElement('input');
-    hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'stripeToken');
-    hiddenInput.setAttribute('value', token.id);
-    form.appendChild(hiddenInput);
+    if (form) {
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripeToken');
+        hiddenInput.setAttribute('value', token.id);
+        form.appendChild(hiddenInput);
 
-    form.submit();
+        form.submit();
+    }
 }
 console.log("JavaScript is being loaded!");
+
