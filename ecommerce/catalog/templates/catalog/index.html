@@ -5,15 +5,31 @@
 <!--Page Content-->
 
 <div class="index-page-welcome">
-    <h2>Welcome to Cosmic Commerce</h2>
-    <h3>Where you can find the best products in the settled systems</h3>
-    <p>Login here, or feel free to browse or <a href="{% url 'register' %}">Register</a> here</p>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-      </form>
+  <h2>Welcome!</h2>
+  <p>Login here,<a href="{% url 'register' %}">signup</a> here or browse as our guest</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
 </div>
+
+<!-- Featured Products -->
+<div class="featured-products">
+  <h2>Featured Products</h2>
+  {% for product in featured_products %}
+    <div class="product">
+      <h3>{{ product.title }}</h3> 
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <p>Price: ${{ product.price }}</p>
+      <p>{{ product.description }}</p> 
+      <!-- Add more product details here -->
+    </div>
+  {% empty %}
+    <p>No featured products at this time.</p>
+  {% endfor %}
+</div>
+
 
 
 
