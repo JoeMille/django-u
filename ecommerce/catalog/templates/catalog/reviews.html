@@ -28,6 +28,9 @@
         <p>Rating: {{ review.rating }}</p>
         <p>Comment: {{ review.comment }}</p>
         <p>Reviewed by: {{ review.user.username }}</p>
+        {% if user.is_authenticated and user == review.user %}
+            <a href="{% url 'edit_review' review.id %}">Edit</a>
+        {% endif %}
     </div>
 {% empty %}
     <p>No reviews yet.</p>
@@ -35,4 +38,3 @@
 
 {% endblock %}
 
-{% debug %}

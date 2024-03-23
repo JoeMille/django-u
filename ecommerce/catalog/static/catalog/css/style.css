@@ -182,3 +182,10 @@ body {
     padding-top: 20px;
     background-color: beige;
 }
+
+/* Styling for the edit review page */
+
+.edit-review-form {
+    padding-left: 50px;
+    background-color: #f0f0f0;
+}
