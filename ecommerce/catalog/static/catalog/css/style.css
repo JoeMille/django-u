@@ -170,3 +170,9 @@ body {
 }
 
 
+/* Styling for the reviews page */
+
+.review-form {
+    padding-left: 50px;
+    background-color: #f0f0f0;
+}

@@ -97,10 +97,14 @@ def charge(request):
 # Reviews page view
 
 def reviews(request):
-    reviews = Review.objects.all()  # Get all reviews
-    return render(request, 'catalog/reviews.html', {'reviews': reviews})
+    reviews = Review.objects.all() 
+    products = Product.objects.all() 
+    print(products) # Print all products to the terminal test   REMOVE THIS LINE
+    return render(request, 'catalog/reviews.html', {'reviews': reviews, 'products': products})
 
 def create_review(request):
+    products = Product.objects.all()  
+    print(products) # Print all products to the terminal test REMOVE THIS LINE
     if request.method == 'POST':
         review = Review()
         review.user = request.user
@@ -108,4 +112,5 @@ def create_review(request):
         review.rating = request.POST['rating']
         review.comment = request.POST['comment']
         review.save()
-    return redirect('reviews')
+        return redirect('reviews')
+    return render(request, 'catalog/create_review.html', {'products': products})

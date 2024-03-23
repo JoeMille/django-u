@@ -10,6 +10,7 @@ urlpatterns = [
     path('payment/', views.payment, name='payment'),
     path('charge/', views.charge, name='charge'),
     path('reviews/', views.reviews, name='reviews'),
+    path('create_review/', views.create_review, name='create_review'),
     path('add_to_basket/<int:product_id>/', views.add_to_basket, name='add_to_basket'),
     path('remove_from_basket/<int:item_id>/', views.remove_from_basket, name='remove_from_basket'),
 ]
