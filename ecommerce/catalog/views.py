@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
-from .models import Product, Basket, BasketItem  
+from .models import Product, Basket, BasketItem, Review 
 
 # Index page view
 def index(request):
@@ -94,3 +94,18 @@ def charge(request):
 
         return render(request, 'catalog/charge.html')
 
+# Reviews page view
+
+def reviews(request):
+    reviews = Review.objects.all()  # Get all reviews
+    return render(request, 'catalog/reviews.html', {'reviews': reviews})
+
+def create_review(request):
+    if request.method == 'POST':
+        review = Review()
+        review.user = request.user
+        review.product = Product.objects.get(pk=request.POST['product_id'])
+        review.rating = request.POST['rating']
+        review.comment = request.POST['comment']
+        review.save()
+    return redirect('reviews')

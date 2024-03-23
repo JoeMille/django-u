@@ -38,3 +38,12 @@ class BasketItem(models.Model):
 
     def total_price(self):
         return self.product.price * self.quantity
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return f'Review for {self.product.title} by {self.user.username}'
