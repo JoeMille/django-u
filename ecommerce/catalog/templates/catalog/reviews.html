@@ -2,9 +2,37 @@
 
 {% block content %}
 
-<select id="product_id" name="product_id">
-    {% for product in products %}
-        <option value="{{ product.id }}">{{ product.title }}</option>
-    {% endfor %}
-</select>
+<!-- Product review form -->
+<div class="review-form">
+    <form method="POST" action="{% url 'create_review' %}">
+        {% csrf_token %}
+        <label for="product_id">Product:</label><br>
+        <select id="product_id" name="product_id">
+            {% for product in products %}
+                <option value="{{ product.id }}">{{ product.title }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="rating">Rating:</label><br>
+        <input type="text" id="rating" name="rating"><br>
+        <label for="comment">Comment:</label><br>
+        <textarea id="comment" name="comment"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<!-- Product reviews -->
+
+{% for review in reviews %}
+    <div class="product-reviews">
+        <h2>{{ review.product.title }}</h2>
+        <p>Rating: {{ review.rating }}</p>
+        <p>Comment: {{ review.comment }}</p>
+        <p>Reviewed by: {{ review.user.username }}</p>
+    </div>
+{% empty %}
+    <p>No reviews yet.</p>
+{% endfor %}
+
 {% endblock %}
+
+{% debug %}

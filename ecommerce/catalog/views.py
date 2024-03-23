@@ -97,9 +97,9 @@ def charge(request):
 # Reviews page view
 
 def reviews(request):
-    reviews = Review.objects.all() 
+    reviews = Review.objects.all()  
     products = Product.objects.all() 
-    print(products) # Print all products to the terminal test   REMOVE THIS LINE
+    print(reviews) # Print all reviews to the terminal test REMOVE THIS LINE 
     return render(request, 'catalog/reviews.html', {'reviews': reviews, 'products': products})
 
 def create_review(request):
@@ -114,3 +114,22 @@ def create_review(request):
         review.save()
         return redirect('reviews')
     return render(request, 'catalog/create_review.html', {'products': products})
+
+def edit_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+    if request.method == 'POST':
+        if request.user == review.user:
+            review.rating = request.POST['rating']
+            review.comment = request.POST['comment']
+            review.save()
+        return redirect('reviews')
+    else:
+        if request.user != review.user:
+            return redirect('reviews')
+        return render(request, 'catalog/edit_review.html', {'review': review})
+
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+    if request.user == review.user:
+        review.delete()
+    return redirect('reviews')
