@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Category model, allowing for the creation of categories for products
 class Category(models.Model):
@@ -18,7 +19,7 @@ class Product(models.Model):
     featured = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.description
+        return self.title
 
 # Basket model
 class Basket(models.Model):
@@ -39,12 +40,16 @@ class BasketItem(models.Model):
     def total_price(self):
         return self.product.price * self.quantity
 
+RATING_CHOICES = [(i, i) for i in range(1, 11)]
+
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
-    rating = models.IntegerField()
+    rating = models.IntegerField(choices=RATING_CHOICES)
     comment = models.TextField(default='')
 
     def __str__(self):
         return f'Review for {self.product.title} by {self.user.username}'
+
+   

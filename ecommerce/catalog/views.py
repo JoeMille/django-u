@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
 from .models import Product, Basket, BasketItem, Review 
+from django.contrib.auth import logout as auth_logout
 
 # Index page view
 def index(request):
@@ -25,10 +26,13 @@ def index(request):
         basket, created = Basket.objects.get_or_create(user=request.user)
     
     # Fetch featured products 
-    featured_products = Product.objects.filter(featured=True)[:3]
+    featured_products = Product.objects.filter(featured=True)[:4]
 
-    return render(request, 'catalog/index.html', {'form': form, 'basket': basket})
+    # Fetch legendary products
+    legendary_products = Product.objects.filter(category__name='Legendary')
 
+    return render(request, 'catalog/index.html', {'form': form, 'basket': basket, 'featured_products': featured_products, 'legendary_products': legendary_products})
+    
 # Add products to user basket
 def add_to_basket(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
@@ -50,6 +54,12 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'catalog/register.html', {'form': form})
+
+# Logout view
+
+def logout(request):
+    auth_logout(request)
+    return redirect('index')
 
 # Products page view
 def products(request):

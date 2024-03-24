@@ -2,12 +2,31 @@
 // Header image pulsating effect
 
 const header = document.querySelector('.site-header');
+const featuredProducts = document.querySelector('.featured-products');
         let brightness = 1;
 
         setInterval(() => {
             brightness = brightness === 1 ? 1.5 : 1;
             header.style.filter = `brightness(${brightness})`;
+            featuredProducts.style.filter `brightness(${brightness})`;
         }, 2000);
+
+
+
+// Product image carousel
+function rotate() {
+    var lastChild = $('.slider div:last-child').clone();
+    /*$('#test').html(lastChild)*/
+    $('.slider div').removeClass('firstSlide')
+    $('.slider div:last-child').remove();
+    $('.slider').prepend(lastChild)
+    $(lastChild).addClass('firstSlide')
+  }
+  
+  window.setInterval(function(){
+    rotate()
+  }, 4000);
+  
 
 // Stripe Js payment form 
 
@@ -51,5 +70,19 @@ function stripeTokenHandler(token) {
         form.submit();
     }
 }
-console.log("JavaScript is being loaded!");
 
+// Validate review rating field max value 10 REVIEWS PAGE FORM
+
+document.getElementById('reviewForm').addEventListener('submit', function(event) {
+    var rating = document.getElementById('rating').value;
+    if (rating < 1 || rating > 10) {
+        alert('Rating must be between 1 and 10.');
+        event.preventDefault();
+    }
+});
+
+
+
+
+
+console.log("JavaScript is being loaded!");
