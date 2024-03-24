@@ -4,19 +4,28 @@
 
 <!--Page Content-->
 
-<div class="index-page-welcome">
-  <h2>Welcome!</h2>
-  <p>Login here,<a href="{% url 'register' %}">signup</a> here or browse as our guest</p>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-</div>
+{% if user.is_authenticated %}
+  <div class="user-greeting">
+    <h2>Welcome, {{ user.username }}!</h2>
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+{% else %}
+  <div class="index-page-welcome">
+    <h2>Welcome!</h2>
+    <p>Login here,<a href="{% url 'register' %}">signup</a> here or browse as our guest</p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Login</button>
+    </form>
+  </div>
+{% endif %}
 
 <!-- Featured Products -->
 <div class="featured-products">
-  <h2>Featured Products</h2>
   {% for product in featured_products %}
     <div class="product">
       <h3>{{ product.title }}</h3> 
