@@ -11,6 +11,12 @@ const featuredProducts = document.querySelector('.featured-products');
             featuredProducts.style.filter `brightness(${brightness})`;
         }, 2000);
 
+// code for particles.js background(script linked from particles.json file)
+particlesJS.load('particles-js', particlesJsonUrl, function() {
+    console.log('particles.js loaded - callback');
+  });
+  
+
 
 
 // Product image carousel

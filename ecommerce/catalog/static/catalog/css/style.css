@@ -6,6 +6,17 @@ body {
     background-color: rgb(54, 20, 88);
 }
 
+.particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; 
+    background-size: cover;
+  }
+  
+  
 .site-header {
     background-image: url(../images/planet-image.jpeg);
     background-size: cover;
@@ -95,6 +106,10 @@ body {
 }
 
 /* user greeting styling */
+.image-greeting-flex-container {
+    display: flex;
+    align-items: flex-start;
+}
 
 .user-greeting {
     font-family: "Exo 2", sans-serif;
@@ -116,6 +131,7 @@ body {
     z-index: 2;
     margin: auto;
     overflow: hidden;
+    flex-grow: 1;
 }
 .slider [class*="box"] {
     /*   float: left; */

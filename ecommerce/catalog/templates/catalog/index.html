@@ -4,47 +4,41 @@
 
 <!--Page Content-->
 
-{% if user.is_authenticated %}
-  <div class="user-greeting">
-    <h2>Welcome, {{ user.username }}!</h2>
-    <form action="{% url 'logout' %}" method="post">
-      {% csrf_token %}
-      <button type="submit">Logout</button>
-    </form>
-  </div>
-{% else %}
-  <div class="index-page-welcome">
-    <h2>Welcome!</h2>
-    <p>Login here,<a href="{% url 'register' %}">signup</a> here or browse as our guest</p>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Login</button>
-    </form>
-  </div>
-{% endif %}
+<div class="image-greeting-flex-container">
+  {% if user.is_authenticated %}
+    <div class="user-greeting">
+      <h2>Welcome, {{ user.username }}!</h2>
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+    </div>
+  {% else %}
+    <div class="index-page-welcome">
+      <h2>Welcome!</h2>
+      <p>Login here,<a href="{% url 'register' %}">signup</a> here or browse as our guest</p>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  {% endif %}
 
-<!-- Image Carousel-->
-
-<div class="carousel-container">
-  <div class="slider">
-    <div class="box1">
-    </div>
-    <div class="box2">
-    </div>
-    <div class="box3">
-    </div>
-    <div class="box4">
-    </div>
-    <div class="box5">
-    </div>
-    <div class="box6">
-    </div>
-    <div class="box7">
+  <!-- Image Carousel-->
+  <div class="carousel-container">
+    <div class="slider">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+      <div class="box4"></div>
+      <div class="box5"></div>
+      <div class="box6"></div>
+      <div class="box7"></div>
     </div>
   </div>
+  <div id="test"></div>
 </div>
-<div id="test"></div>
 
 <!-- Featured Products -->
 <div class="featured-product-title">
