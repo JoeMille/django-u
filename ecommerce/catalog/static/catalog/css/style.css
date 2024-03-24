@@ -36,12 +36,12 @@ body {
 .site-nav li {
     background-color: #f2f2f2;
     border: 1px solid #000;
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 20px 40px; /* Increase padding */
+    margin: 5px; /* Reduce margin */
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    width: 100px;
-    height: 50px; 
+    width: 200px; /* Increase width */
+    height: 100px; /* Increase height */
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -54,6 +54,7 @@ body {
 .site-nav a {
     text-decoration: none;
     color: #000;
+    font-size: 2em; /* Increase font size */
 }
 
 /* Logout function styling */
@@ -105,75 +106,82 @@ body {
 
 /* image carousel styling */
 
-.container{
-    width:100vw;
+.carousel-container{
+    width:70vw;
     height:80vh;
     display:flex;
     justify-content:center;
     align-items:center;
-  }
-  .slider {
-    height: 750px;
-    width:100vw;
-    display: flex;
-    perspective: 1000px;
     position: relative;
-    align-items:center;
-  }
-  .box1 {      
+    z-index: 2;
+    margin: auto;
+    overflow: hidden;
+}
+.slider [class*="box"] {
+    /*   float: left; */
+    overflow: hidden;
+    border-radius:20px;
+    transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    position:absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+    max-width: 500px; 
+    max-height: 400px; 
+}
+.box1 {      
     background:url('../images/Dyson-portal-Legendary.JPG');
-    background-size:cover;
-    background-position:center center;}
-  .box2{
-  background:url('../images/Predator-armor-Legendary.JPG');
-    background-size:cover;
-    background-position:center center;}
-  .box3{
-  background:url('../images/Mining-enging-Legendary.JPG');
-    background-size:cover;
-    background-position:center center;}
-  .box4{
-  background:url('../images/NASA-EVA-Legendary.JPG');
-    background-size:cover;
-    background-position:center center;}
-  .box5{
-  background:url('../images/prometheus-ship.jpeg');
-    background-size:cover;
-    background-position:center center;}
-  .box6{
-  background:url('../images/star-citizen-ship1.png');
-    background-size:cover;
-    background-position:center center;}
-  .box7{
-  background:url('../images/star-citizen-EVA-suit.webp');
-    background-size:cover;
-    background-position:center center;}
+    background-position:center center;
+}
+.box2 {
+    background:url('../images/Predator-armor-Legendary.JPG');
+    background-position:center center;
+}
+.box3 {
+    background:url('../images/Mining-enging-Legendary.JPG');
+    background-position:center center;
+}
+.box4 {
+    background:url('../images/NASA-EVA-Legendary.JPG');
+    background-position:center center;
+}
+.box5 {
+    background:url('../images/prometheus-ship.jpeg');
+    background-position:center center;
+}
+.box6 {
+    background:url('../images/star-citizen-ship1.png');
+    background-position:center center;
+}
+.box7 {
+    background:url('../images/star-citizen-EVA-suit.webp');
+    background-position:center center;
+  }
   
-  .slider [class*="box"] {
+.slider [class*="box"] {
   /*   float: left; */
     overflow: hidden;
     border-radius:20px;
     transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
       position:absolute;
-  }
-  .slider [class*="box"]:nth-child(7),
-  .slider [class*="box"]:nth-child(1) {
+}
+.slider [class*="box"]:nth-child(7),
+.slider [class*="box"]:nth-child(1) {
     width: 100vh;
     height: 60vh;
     transform: scale(0.2) translate(-50%,-50%);
     top: 10%;
     z-index:1;
-  }
-  .slider [class*="box"]:nth-child(2),
-  .slider [class*="box"]:nth-child(6) {
+}
+.slider [class*="box"]:nth-child(2),
+.slider [class*="box"]:nth-child(6) {
     width: 100vh;
     height: 60vh;
     transform: scale(0.4) translate(-50%,-50%);
     top: 20%;
     z-index:2;
-  }
-  .slider [class*="box"]:nth-child(3),
-  .slider [class*="box"]:nth-child(5) {
+}
+.slider [class*="box"]:nth-child(3),
+.slider [class*="box"]:nth-child(5) {
     width: 100vh;
     height: 60vh;
     transform: scale(0.6) translate(-50%,-50%);
@@ -189,33 +197,33 @@ body {
     top: 50%;
     z-index:4;
   }
-  .slider [class*="box"]:nth-child(1){
+.slider [class*="box"]:nth-child(1){
     left:-13%;}
-  .slider [class*="box"]:nth-child(2){
+.slider [class*="box"]:nth-child(2){
     left:-5%;}
-  .slider [class*="box"]:nth-child(3){
+.slider [class*="box"]:nth-child(3){
     left:10%;}
-  .slider [class*="box"]:nth-child(4){
+.slider [class*="box"]:nth-child(4){
     left:50%;}
-  .slider [class*="box"]:nth-child(5){
+.slider [class*="box"]:nth-child(5){
     left:71%;}
-  .slider [class*="box"]:nth-child(6){
+.slider [class*="box"]:nth-child(6){
     left:85%;}
-  .slider [class*="box"]:nth-child(7){
+.slider [class*="box"]:nth-child(7){
     left:100%;}
-  .slider .firstSlide {
+.slider .firstSlide {
       -webkit-animation:  firstChild 1s;
       animation:  firstChild 1s;
-  }
+}
   /*Animation for buyers landing page slider*/
-  @-webkit-keyframes firstChild {
+@-webkit-keyframes firstChild {
       0% {left:100%; transform: scale(0.2) translate(-50%,-50%);}
       100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
-  }
-  @keyframes firstChild {
+}
+@keyframes firstChild {
      0% {left:100%; transform: scale(0.2) translate(-50%,-50%);}
       100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
-  }
+}
 
 /* featured product styling */
 
