@@ -6,6 +6,7 @@ body {
     margin: 0;
 }
 
+/* Base.html styles */
 #particles-js {
     position: fixed;
     top: 0;
@@ -33,6 +34,14 @@ body {
     justify-content: center;
     transition: filter 2s ease-in-out;
     opacity: 0.8;
+}
+
+/* Media query for small screens */
+@media only screen and (max-width: 768px) {
+    .site-header {
+        font-size: 40px;
+        height: 200px;
+    }
 }
 
 /* Nav bar */
@@ -80,8 +89,36 @@ body {
     color: white;
     opacity: 1;
 }
-/* Logout function styling */
 
+/* Media queries for tablets and medium-sized devices */
+@media only screen and (max-width: 768px) {
+    .site-nav ul {
+        flex-direction: column;
+    }
+    .site-nav li {
+        width: auto; 
+        height: auto; 
+        padding: 10px 20px;
+    }
+    .site-nav a {
+        font-size: 1.4em; 
+    }
+}
+
+/* Media query CSS for mobile devices */
+@media only screen and (max-width: 480px) {
+    .site-nav ul {
+        flex-direction: column;
+    }
+    .site-nav li {
+        width: auto; 
+        height: auto; 
+        padding: 8px 16px;
+    }
+    .site-nav a {
+        font-size: 1.2em; 
+    }
+}
 
 /* basket styling */
 
@@ -100,6 +137,15 @@ body {
 .basket-info p {
     margin: 0 0 10px;
 }
+
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .basket-info {
+        position: static;
+        right: auto;
+    }
+}
+/* Logout function styling */
 
 
 /* image carousel styling */
@@ -225,6 +271,13 @@ body {
       100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
 }
 
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .carousel-container {
+        display: none;
+    }
+}
+
 /* index main content */
 
 .index-page-welcome {
@@ -255,6 +308,14 @@ body {
     top: 400px; /* adjust as needed */
     left: 1vw; 
     z-index: 3;
+}
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .index-page-welcome, .user-greeting {
+        position: static;
+        top: auto;
+        left: auto;
+    }
 }
 
 /* featured product styling */
@@ -372,7 +433,20 @@ body {
     width: 200px; 
     height: auto;
 }
-
+/* CSS for mobile and small devices */
+/* CSS for mobile and small devices */
+@media only screen and (max-width: 480px) {
+    .featured-products {
+        justify-content: flex-start; /* Align items along the start line */
+    }
+    .featured-products .product {
+        width: 50%; /* Two products per row */
+        box-sizing: border-box; /* Include padding and border in element's total width and height */
+    }
+    .featured-products .product:nth-child(n+3) {
+        display: none; /* Hide all products except the first two */
+    }
+}
 /* Legendary Products styling */
 .legendary-products-title {
     margin-top: 50px;

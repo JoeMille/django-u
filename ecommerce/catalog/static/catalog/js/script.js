@@ -41,6 +41,7 @@ function rotate() {
   
 
 // Stripe Js payment form 
+// To use this payment method live, you must switch to HTTPs to ensure secure data transfer
 
 var stripe = Stripe('pk_test_51Own3jFlpTEzDIrEWgl8A3ChU9v5tddxPbVh8VTxHJJHAXU0nzAVBRGGvap56gncNJuVudSf0uixGMrU77It6sUV00qCFkadDE');
 var elements = stripe.elements();
