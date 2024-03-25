@@ -52,4 +52,6 @@ class Review(models.Model):
     def __str__(self):
         return f'Review for {self.product.title} by {self.user.username}'
 
-   
+class ContactMessage(models.Model):
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)

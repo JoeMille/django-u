@@ -1,3 +1,4 @@
+# views.py
 import stripe
 from django.conf import settings
 from django.http import JsonResponse
@@ -9,15 +10,24 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Category, Product, Basket, BasketItem, Review 
 from django.contrib.auth import logout as auth_logout
 from django.db.models import Prefetch
+from django.core.mail import send_mail
+from .forms import ContactForm
+from .models import ContactMessage
 
 # Index page view
 def index(request):
+    contact_form = ContactForm()
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
+        contact_form = ContactForm(request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('index')  
+            return redirect('index')
+        elif contact_form.is_valid():
+            message = contact_form.cleaned_data['message']
+            ContactMessage.objects.create(message=message)  # create a new ContactMessage
+            return redirect('index')
     else:
         form = AuthenticationForm()
 
@@ -32,7 +42,8 @@ def index(request):
     # Fetch legendary products
     legendary_products = Product.objects.filter(category__name='Legendary')
 
-    return render(request, 'catalog/index.html', {'form': form, 'basket': basket, 'featured_products': featured_products, 'legendary_products': legendary_products})
+    return render(request, 'catalog/index.html', {'form': form, 'basket': basket, 'featured_products': featured_products, 'legendary_products': legendary_products, 'contact_form': contact_form})
+
 
 # Add products to user basket
 def add_to_basket(request, product_id):
@@ -69,7 +80,7 @@ def products(request):
     )
     return render(request, 'catalog/products.html', {'categories': categories})
 
-    
+
 # Checkout page view
 def checkout(request):
     if request.user.is_authenticated:

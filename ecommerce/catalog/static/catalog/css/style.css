@@ -36,7 +36,6 @@ body {
 }
 
 /* Nav bar */
-
 .site-nav ul {
     font-family: "Quantico", sans-serif;
     list-style: none;
@@ -48,13 +47,17 @@ body {
     opacity: 0.7;
 }
 
+.site-nav ul:hover {
+    opacity: 1;
+}
+
 .site-nav li {
     background-color: #f2f2f2;
     border: 1px solid #000;
     padding: 18px 36px; 
     margin: 5px; 
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
     width: 180px; 
     height: 90px; 
     display: flex; 
@@ -64,6 +67,7 @@ body {
 
 .site-nav li:hover {
     background-color: #0f0736;
+    opacity: 1;
 }
 
 .site-nav a {
@@ -74,6 +78,7 @@ body {
 
 .site-nav a:hover {
     color: white;
+    opacity: 1;
 }
 /* Logout function styling */
 
@@ -374,7 +379,41 @@ body {
     width: 200px; 
     height: auto;
 }
+
+/* Styling for the further information section of index page */
+
+.further-info {
+    font-family: "Quantico", sans-serif;
+    background-color: white;
+    margin: 40px auto;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Contact form styling */
+
+.site-contact-form {
+    font-family: "Exo 2", sans-serif;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    width: 33%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 200px;
+    border-radius: 5px;
+}
+
 /* Checkout page styling */
+
+
+
+
+
+
 
 /* Checkout basket styling */
 .checkout-basket {
