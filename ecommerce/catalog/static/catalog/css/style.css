@@ -141,7 +141,7 @@ body {
     background-position:center center;
 }
 .box4 {
-    background:url('../images/NASA-EVA-Legendary.JPG');
+    background:url('../images/caterpillar-mechsuit.JPG');
     background-position:center center;
 }
 .box5 {
@@ -285,6 +285,28 @@ body {
 
 /* Styling for the product page */
 
+.product-page-title {
+    font-family: "Quantico", sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 5px; /* Reduce the padding */
+    height: 200px; 
+    display: block;  
+    margin-bottom: 0; /* Add this line */
+}
+
+.product-category-title {
+    font-family: "Quantico", sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 5px; /* Reduce the padding */
+    background-size: cover; 
+    background-repeat: no-repeat;
+    text-decoration: underline;
+    margin-top: 0; /* Add this line */
+} 
 
 .product-list {
     display: flex;
@@ -424,11 +446,6 @@ body {
 /* Checkout page styling */
 
 
-
-
-
-
-
 /* Checkout basket styling */
 .checkout-basket {
     background-color: white;
@@ -484,6 +501,16 @@ body {
 
 /* Styling for the Reviews page */
 
+.review-page-title {
+    font-family: "Quantico", sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    background-size: cover; ;
+    background-repeat: no-repeat;
+}
+
 .review-form {
     font-family: "Quantico", sans-serif;
     padding-left: 50px;
@@ -514,24 +541,42 @@ body {
 }
 
 .product-reviews img {
-    width: 200px;  /* Set the width of the image */
-    height: auto;  /* Set the height of the image to auto to maintain aspect ratio */
-    display: block;  /* Display the image as a block element */
-    margin: 0 auto;  /* Center the image horizontally */
+    width: 400px;  
+    height: auto;  
+    display: block;  
+    margin: 0 auto;  
 }
 
 /* Styling for the edit review page */
 
 .edit-review-form {
+    font-family: "Quantico", sans-serif;
     padding-left: 50px;
     background-color: #f0f0f0;
+    width: 35%; 
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-review-form textarea {
+    width: 400px; 
+    height: 200px; 
 }
 
 .site-footer {
-    background-color: rgb(54, 20, 88);
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-family: "Exo 2", sans-serif;
+    font-family: "Quantico", sans-serif;
     font-size: 20px;
+    color: white; 
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: rgb(16, 12, 36);
+    text-align: center;
+    opacity: 0.9;
+}
+
+.site-footer a {
+    margin-right: 10px; /* Add this line */
+    margin-left: 10px; /* Add this line */
 }

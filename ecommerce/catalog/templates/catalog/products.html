@@ -2,7 +2,13 @@
 
 {% block content %}
 
+<div class="product-page-title">
+    <h2>OUR INVENTORY</h2>
+    <p>Explore and Conquer with confidence.</p>
+</div>
+
 {% for Category in categories %}
+<h2 class="product-category-title">{{ Category.name }}</h2> 
 <div class="product-list">
     {% for product in Category.products %}
     <div class="product-item">
