@@ -577,6 +577,6 @@ body {
 }
 
 .site-footer a {
-    margin-right: 10px; /* Add this line */
-    margin-left: 10px; /* Add this line */
+    margin-right: 10px; 
+    margin-left: 10px; 
 }

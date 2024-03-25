@@ -1,23 +1,29 @@
 
 // Header image pulsating effect
 
+// Header image pulsating effect
 const header = document.querySelector('.site-header');
 const featuredProducts = document.querySelector('.featured-products');
-        let brightness = 1;
+let brightness = 1;
 
-        setInterval(() => {
-            brightness = brightness === 1 ? 1.5 : 1;
-            header.style.filter = `brightness(${brightness})`;
-            featuredProducts.style.filter `brightness(${brightness})`;
-        }, 2000);
+setInterval(() => {
+    brightness = brightness === 1 ? 1.5 : 1;
+    if (header) {
+        header.style.filter = `brightness(${brightness})`;
+    }
+    if (featuredProducts) {
+        featuredProducts.style.filter = `brightness(${brightness})`;
+    }
+}, 2000);
 
-// code for particles.js background(script linked from particles.json file)
-particlesJS.load('particles-js', particlesJsonUrl, function() {
-    console.log('particles.js loaded - callback');
-  });
-  
-
-
+// code for particles.js background
+window.addEventListener('load', function() {
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS.load('particles-js', particlesJsonUrl, function() {
+            console.log('particles.js loaded - callback');
+        });
+    }
+});
 
 // Product image carousel
 function rotate() {
@@ -79,14 +85,18 @@ function stripeTokenHandler(token) {
 
 // Validate review rating field max value 10 REVIEWS PAGE FORM
 
-document.getElementById('reviewForm').addEventListener('submit', function(event) {
-    var rating = document.getElementById('rating').value;
-    if (rating < 1 || rating > 10) {
-        alert('Rating must be between 1 and 10.');
-        event.preventDefault();
+window.onload = function() {
+    var reviewForm = document.getElementById('reviewForm');
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', function(event) {
+            var rating = document.getElementById('rating').value;
+            if (rating < 1 || rating > 10) {
+                alert('Rating must be between 1 and 10.');
+                event.preventDefault();
+            }
+        });
     }
-});
-
+}
 
 
 
