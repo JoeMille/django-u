@@ -24,7 +24,9 @@
                 <li><a href="{% url 'register' %}">Register</a></li>
                 <li><a href="{% url 'products' %}">Products</a></li>
                 <li><a href="{% url 'reviews' %}">Reviews</a></li>
+                {% if user.is_authenticated %}
                 <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                {% endif %}
             </ul>
         </nav>
     </section>
