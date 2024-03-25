@@ -1,28 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cosmic Commerce</title>
-    <!-- Include CSS file -->
-    <link rel="stylesheet" type="text/css" href="{% static 'catalog/css/style.css' %}">
-</head>
-<body>
-    <!-- Content of the page -->
-    <header class="site-header">
-        <h1>COSMIC COMMERCE</h1>
-    </header>
-    <section class="site-nav">
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
-                <li><a href="{% url 'products' %}">Products</a></li>
-                <li><a href="{% url 'checkout' %}">Checkout</a></li>
-                
-            </ul>
-        </nav>
-    </section>
+{% extends 'catalog/base.html' %}
 
+{% block content %}
     <div class="checkout-basket">
         <h2>Checkout</h2>
         <ul>
@@ -44,8 +22,5 @@
         <a href="{% url 'payment' %}" class="confirm-basket-button">Confirm Basket?</a>
     </div>
 
+{% endblock %}
 
-    <!-- Include JavaScript file -->
-    <script src="{% static 'catalog/js/script.js' %}"></script>
-</body>
-</html>
