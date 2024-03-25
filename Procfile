@@ -1,1 +1,1 @@
-web: gunicorn cosmic-commerce.wsgi
+web: gunicorn catalog.wsgi

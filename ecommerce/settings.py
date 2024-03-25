@@ -41,7 +41,6 @@ DATABASES = {
 # Application definition
 
 INSTALLED_APPS = [
-    'cosmic-commerce',
     'catalog',
     'products',
     'django.contrib.admin',
