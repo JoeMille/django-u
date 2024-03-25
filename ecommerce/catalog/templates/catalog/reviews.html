@@ -25,6 +25,7 @@
 {% for review in reviews %}
     <div class="product-reviews">
         <h2>{{ review.product.title }}</h2>
+        <img src="{{ review.product.image.url }}" alt="{{ review.product.title }}">  <!-- Add this line -->
         <p>Rating: {{ review.rating }}</p>
         <p>Comment: {{ review.comment }}</p>
         <p>Reviewed by: {{ review.user.username }}</p>

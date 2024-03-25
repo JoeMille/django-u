@@ -26,7 +26,7 @@ def index(request):
             return redirect('index')
         elif contact_form.is_valid():
             message = contact_form.cleaned_data['message']
-            ContactMessage.objects.create(message=message)  # create a new ContactMessage
+            ContactMessage.objects.create(message=message)  
             return redirect('index')
     else:
         form = AuthenticationForm()

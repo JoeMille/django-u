@@ -42,6 +42,7 @@ class BasketItem(models.Model):
 
 RATING_CHOICES = [(i, i) for i in range(1, 11)]
 
+# Review model, allowing for the creation of reviews for products
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -52,6 +53,12 @@ class Review(models.Model):
     def __str__(self):
         return f'Review for {self.product.title} by {self.user.username}'
 
+# ContactMessage model, allowing for the creation of a contact message with an email, title, message, and created_at field
 class ContactMessage(models.Model):
+    email = models.EmailField(default='default@example.com')
+    title = models.CharField(max_length=200)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title  # return the message title
