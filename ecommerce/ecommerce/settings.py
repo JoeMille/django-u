@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os 
 from pathlib import Path
 from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +32,10 @@ STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 
 
 ALLOWED_HOSTS = []
+
+DATABASES = {
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+}
 
 
 # Application definition
