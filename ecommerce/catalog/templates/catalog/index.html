@@ -4,7 +4,21 @@
 
 <!--Page Content-->
 
-<div class="image-greeting-flex-container">
+<div class="carousel-container">
+  <div class="slider">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+  </div>
+</div>
+<div id="test"></div>
+
+
+
   {% if user.is_authenticated %}
     <div class="user-greeting">
       <h2>Welcome, {{ user.username }}!</h2>
@@ -25,20 +39,6 @@
     </div>
   {% endif %}
 
-  <!-- Image Carousel-->
-  <div class="carousel-container">
-    <div class="slider">
-      <div class="box1"></div>
-      <div class="box2"></div>
-      <div class="box3"></div>
-      <div class="box4"></div>
-      <div class="box5"></div>
-      <div class="box6"></div>
-      <div class="box7"></div>
-    </div>
-  </div>
-  <div id="test"></div>
-</div>
 
 <!-- Featured Products -->
 <div class="featured-product-title">

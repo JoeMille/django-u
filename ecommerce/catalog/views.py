@@ -6,8 +6,9 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
-from .models import Product, Basket, BasketItem, Review 
+from .models import Category, Product, Basket, BasketItem, Review 
 from django.contrib.auth import logout as auth_logout
+from django.db.models import Prefetch
 
 # Index page view
 def index(request):
@@ -32,7 +33,7 @@ def index(request):
     legendary_products = Product.objects.filter(category__name='Legendary')
 
     return render(request, 'catalog/index.html', {'form': form, 'basket': basket, 'featured_products': featured_products, 'legendary_products': legendary_products})
-    
+
 # Add products to user basket
 def add_to_basket(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
@@ -63,9 +64,12 @@ def logout(request):
 
 # Products page view
 def products(request):
-    products = Product.objects.all()
-    return render(request, 'catalog/products.html', {'products': products})
+    categories = Category.objects.prefetch_related(
+        Prefetch('product_set', queryset=Product.objects.all(), to_attr='products')
+    )
+    return render(request, 'catalog/products.html', {'categories': categories})
 
+    
 # Checkout page view
 def checkout(request):
     if request.user.is_authenticated:
